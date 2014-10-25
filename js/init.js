@@ -1,52 +1,85 @@
 /*
-	Read Only by HTML5 UP
+	Helios by HTML5 UP
 	html5up.net | @n33co
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+
 (function($) {
 
+	var settings = {
+		
+		// Header (homepage only)
+			header: {
+				fullScreen: true,
+				fadeIn: true,
+				fadeDelay: 500
+			},
+
+		// Carousels
+			carousels: {
+				speed: 4,
+				fadeIn: true,
+				fadeDelay: 250
+			},
+	
+	};
+	
 	skel.init({
 		reset: 'full',
 		breakpoints: {
-			global: { href: 'css/style.css', containers: '45em', grid: { gutters: { vertical: '2em', horizontal: 0 } } },
-			xlarge: { media: '(max-width: 1680px)', href: 'css/style-xlarge.css' },
-			large: { media: '(max-width: 1280px)', href: 'css/style-large.css', containers: '42em', grid: { gutters: { vertical: '1.5em' } }, viewport: { scalable: false } },
-			medium: { media: '(max-width: 1024px)', href: 'css/style-medium.css', containers: '85%', grid: { collapse: 1 } },
-			small: { media: '(max-width: 736px)', href: 'css/style-small.css', containers: '90%', grid: { gutters: { vertical: '1.25em' } } },
-			xsmall: { media: '(max-width: 480px)', href: 'css/style-xsmall.css', grid: { collapse: 2 } }
+			'global':	{ range: '*', href: 'css/style.css', containers: 1400, grid: { gutters: 48 } },
+			'wide':		{ range: '-1680', href: 'css/style-wide.css', containers: 1200 },
+			'normal':	{ range: '-1280', href: 'css/style-normal.css', containers: '100%', grid: { gutters: 36 } },
+			'narrow':	{ range: '-960', href: 'css/style-narrow.css', grid: { gutters: 32 } },
+			'narrower': { range: '-840', href: 'css/style-narrower.css', grid: { collapse: true } },
+			'mobile':	{ range: '-736', href: 'css/style-mobile.css', grid: { gutters: 16 }, viewport: { scalable: false } }
 		},
 		plugins: {
 			layers: {
-				titleBar: {
-					breakpoints: 'medium',
-					width: '100%',
-					height: 44,
+				config: {
+					transformTest: function() { return skel.vars.isMobile; }
+				},
+				navPanel: {
+					hidden: true,
+					breakpoints: 'mobile',
 					position: 'top-left',
 					side: 'top',
-					html: '<span class="toggle" data-action="toggleLayer" data-args="sidePanel"></span><span class="title" data-action="copyText" data-args="logo"></span>'
-				},
-				sidePanel: {
-					breakpoints: 'medium',
-					hidden: true,
-					width: { small: 275, medium: '20em' },
-					height: '100%',
-					animation: 'pushX',
-					position: 'top-right',
-					side: 'right',
-					orientation: 'vertical',
+					width: '100%',
+					height: 250,
+					animation: 'pushY',
 					clickToHide: true,
-					html: '<div data-action="moveElement" data-args="header"></div>'
+					swipeToHide: false,
+					html: '<div data-action="navList" data-args="nav"></div>',
+					orientation: 'vertical'
+				},
+				navButton: {
+					breakpoints: 'mobile',
+					position: 'top-center',
+					side: 'top',
+					width: 100,
+					height: 50,
+					html: '<div class="toggle" data-action="toggleLayer" data-args="navPanel"></div>'
 				}
 			}
 		}
 	});
 
 	$(function() {
-		
-		var $body = $('body'),
-			$header = $('#header'),
-			$nav = $('#nav'), $nav_a = $nav.find('a'),
-			$wrapper = $('#wrapper');
+
+		var	$window = $(window),
+			$body = $('body'),
+			$header =  $('#header');
+			
+		// Disable animations/transitions until the page has loaded.
+			$body.addClass('is-loading');
+			
+			$window.on('load', function() {
+				$body.removeClass('is-loading');
+			});
+			
+		// CSS polyfills (IE<9).
+			if (skel.vars.IEVersion < 9)
+				$(':last-child').addClass('last-child');
 
 		// Forms (IE<10).
 			var $form = $('form');
@@ -64,54 +97,208 @@
 				}
 
 			}
-			
-		// Header.
-			var ids = [];
 
-			// Set up nav items.
-				$nav_a
-					.scrolly()
-					.on('click', function(event) {
+		// Dropdowns.
+			$('#nav > ul').dropotron({ 
+				mode: 'fade',
+				speed: 350,
+				noOpenerFade: true,
+				alignment: 'center'
+			});
+
+		// Scrolly links.
+			$('.scrolly').scrolly();			
+
+		// Carousels.
+			$('.carousel').each(function() {
+				
+				var	$t = $(this),
+					$forward = $('<span class="forward"></span>'),
+					$backward = $('<span class="backward"></span>'),
+					$reel = $t.children('.reel'),
+					$items = $reel.children('article');
+				
+				var	pos = 0,
+					leftLimit,
+					rightLimit,
+					itemWidth,
+					reelWidth,
+					timerId;
+
+				// Items.
+					if (settings.carousels.fadeIn) {
 						
-						var $this = $(this),
-							href = $this.attr('href');
-						
-						// Not an internal link? Bail.
-							if (href.charAt(0) != '#')
-								return;
-						
-						// Prevent default behavior.
-							event.preventDefault();
-						
-						// Remove active class from all links and mark them as locked (so scrollzer leaves them alone).
-							$nav_a
-								.removeClass('active')
-								.addClass('scrollzer-locked');
+						$items.addClass('loading');
+
+						$t.onVisible(function() {
+							var	timerId,
+								limit = $items.length - Math.ceil($window.width() / itemWidth);
+							
+							timerId = window.setInterval(function() {
+								var x = $items.filter('.loading'), xf = x.first();
+								
+								if (x.length <= limit) {
+									
+									window.clearInterval(timerId);
+									$items.removeClass('loading');
+									return;
+								
+								}
+								
+								if (skel.vars.IEVersion < 10) {
+									
+									xf.fadeTo(750, 1.0);
+									window.setTimeout(function() {
+										xf.removeClass('loading');
+									}, 50);
+								
+								}
+								else
+									xf.removeClass('loading');
+								
+							}, settings.carousels.fadeDelay);
+						}, 50);
+					}
+				
+				// Main.
+					$t._update = function() {
+						pos = 0;
+						rightLimit = (-1 * reelWidth) + $window.width();
+						leftLimit = 0;
+						$t._updatePos();
+					};
+				
+					if (skel.vars.IEVersion < 9)
+						$t._updatePos = function() { $reel.css('left', pos); };
+					else
+						$t._updatePos = function() { $reel.css('transform', 'translate(' + pos + 'px, 0)'); };
 					
-						// Set active class on this link.
-							$this.addClass('active');
-					
-					})
-					.each(function() {
-					
-						var $this = $(this),
-							href = $this.attr('href'),
-							id;
+				// Forward.
+					$forward
+						.appendTo($t)
+						.hide()
+						.mouseenter(function(e) {
+							timerId = window.setInterval(function() {
+								pos -= settings.carousels.speed;
+
+								if (pos <= rightLimit)
+								{
+									window.clearInterval(timerId);
+									pos = rightLimit;
+								}
+								
+								$t._updatePos();
+							}, 10);
+						})
+						.mouseleave(function(e) {
+							window.clearInterval(timerId);
+						});
+				
+				// Backward.
+					$backward
+						.appendTo($t)
+						.hide()
+						.mouseenter(function(e) {
+							timerId = window.setInterval(function() {
+								pos += settings.carousels.speed;
+
+								if (pos >= leftLimit) {
+									
+									window.clearInterval(timerId);
+									pos = leftLimit;
+								
+								}
+								
+								$t._updatePos();
+							}, 10);
+						})
+						.mouseleave(function(e) {
+							window.clearInterval(timerId);
+						});
 						
-						// Not an internal link? Bail.
-							if (href.charAt(0) != '#')
-								return;
-						
-						// Add to scrollzer ID list.
-							id = href.substring(1);
-							$this.attr('id', id + '-link');
-							ids.push(id);
-						
+				// Init.
+					$window.load(function() {
+
+						reelWidth = $reel[0].scrollWidth;
+
+						skel.change(function() {
+				
+							if (skel.vars.isTouch) {
+								
+								$reel
+									.css('overflow-y', 'hidden')
+									.css('overflow-x', 'scroll')
+									.scrollLeft(0);
+								$forward.hide();
+								$backward.hide();
+							
+							}
+							else {
+								
+								$reel
+									.css('overflow', 'visible')
+									.scrollLeft(0);
+								$forward.show();
+								$backward.show();
+							
+							}
+
+							$t._update();
+						});
+
+						$window.resize(function() {
+							reelWidth = $reel[0].scrollWidth;
+							$t._update();
+						}).trigger('resize');
+
 					});
-			
-			// Initialize scrollzer.
-				$.scrollzer(ids, { pad: 300, lastHack: true });
+				
+			});
 		
+		// Header.
+			if ($body.hasClass('homepage')) {
+				
+				if (settings.header.fullScreen) {
+					
+					$window.bind('resize.helios', function() {
+						window.setTimeout(function() {
+							var s = $header.children('.inner');
+							var sh = s.outerHeight(), hh = $window.height(), h = Math.ceil((hh - sh) / 2) + 1;
+
+							$header
+								.css('padding-top', h)
+								.css('padding-bottom', h);
+						}, 0);
+					}).trigger('resize');
+				
+				}
+
+				if (settings.header.fadeIn) {
+
+					$.n33_preloadImage = function(url, onload) { var $img = $('<img />'), _IEVersion = (navigator.userAgent.match(/MSIE ([0-9]+)\./) ? parseInt(RegExp.$1) : 99); $img.attr('src', url); if ($img.get(0).complete || _IEVersion < 9) (onload)(); else $img.load(onload); };
+					
+					$('<div class="overlay" />').appendTo($header);
+					
+					$window
+						.load(function() {
+							var imageURL = $header.css('background-image').replace(/"/g,"").replace(/url\(|\)$/ig, "");
+
+							$.n33_preloadImage(imageURL, function() {
+								
+								if (skel.vars.IEVersion < 10)
+									$header.children('.overlay').fadeOut(2000);
+								else
+									window.setTimeout(function() {
+										$header.addClass('ready');
+									}, settings.header.fadeDelay);
+							
+							});
+						});
+				
+				}
+
+			}
+
 	});
 
 })(jQuery);
