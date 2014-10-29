@@ -18,6 +18,10 @@
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
+		<script src="bower_components/lightbox/js/lightbox.min.js"></script>
+
+		<link rel="stylesheet" href="bower_components/lightbox/css/lightbox.css" />
+
 		<noscript>
 			<link rel="stylesheet" href="css/skel.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -51,13 +55,15 @@
 							<li><a href="index.html">Accueil</a></li>
 							<li><a href="#banner" class="scrolly">Découvrir la maison</a></li>
 							<li><a href="#main" class="scrolly">Pourquoi vendons-nous ?</a></li>
+							<li><a href="#footer" class="scrolly">Caractéristiques techniques</a></li>
+							<li><a href="#contact" class="scrolly">Nous contacter</a></li>
 						</ul>
 					</nav>
 
 			</div>
 
 		<!-- Banner -->
-			<section id="banner">
+			<section id="banner" class="banner">
 				<header>
 					<h2>Voici la <strong>merveille</strong>.</h2>
 					<p>
@@ -72,75 +78,171 @@
 				<div class="reel">
 
 					<article>
-						<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+						<a href="images/ossature.jpg" data-lightbox="gallery" class="image featured"><img src="images/ossature.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Une construction en bois</a></h3>
+							<h3>Une construction en bois</h3>
 						</header>
 						<p>La maison repose sur une ossature bois assemblée sur un sous-sol en béton</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
+						<a href="images/terrasse.jpg" data-lightbox="gallery" class="image featured"><img src="images/terrasse.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Une terrasse ensoleillée</a></h3>
+							<h3>Une terrasse ensoleillée</h3>
 						</header>
 						<p>La terrasse de 40m<sup>2</sup> est entièrement recouverte de bois exotique</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
+						<a href="images/jardin.jpg" data-lightbox="gallery" class="image featured"><img src="images/jardin.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Dans un écrin de verdure</a></h3>
+							<h3>Dans un écrin de verdure</h3>
 						</header>
 						<p>Le grand jardin de 10 ares est aménagé de pierres sèches et de bois</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/pac.jpg" alt="" /></a>
+						<a href="images/pac.jpg" data-lightbox="gallery" class="image featured"><img src="images/pac.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Pompe à chaleur</a></h3>
+							<h3>Pompe à chaleur</h3>
 						</header>
 						<p>Une pompe à chaleur alimente un plancher chauffant basse température</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/pic05.jpg" alt="" /></a>
+						<a href="images/panneauxsolaires.jpg" data-lightbox="gallery" class="image featured"><img src="images/panneauxsolaires.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Energie solaire</a></h3>
+							<h3>Energie solaire</h3>
 						</header>
 						<p>L'eau chaude sanitaire est produite par panneaux solaires thermiques</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/cours.jpg" alt="" /></a>
+						<a href="images/cours.jpg" data-lightbox="gallery" class="image featured"><img src="images/cours.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Grande cours et garage</a></h3>
+							<h3>Grande cours</h3>
 						</header>
-						<p>La cours pavée donne accès à un garage accueillant 2 grandes voitures</p>
+						<p>La cours pavée permet de garer 3 voitures</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/allee.jpg" alt="" /></a>
+						<a href="images/garage.jpg" data-lightbox="gallery" class="image featured"><img src="images/garage.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Entre bois et pierre</a></h3>
+							<h3>Garage double</h3>
+						</header>
+						<p>Le garage double donne un accès direct à la cave et la maison</p>
+					</article>
+
+					<article>
+						<a href="images/allee.jpg" data-lightbox="gallery" class="image featured"><img src="images/allee.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Entre bois et pierre</h3>
 						</header>
 						<p>Une petite allée guide les visiteurs vers l'entrée principale</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/entree.jpg" alt="" /></a>
+						<a href="images/entree.jpg" data-lightbox="gallery" class="image featured"><img src="images/entree.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Entrée principale</a></h3>
+							<h3>Entrée principale</h3>
 						</header>
 						<p>Le péron en bois exotique donne sur la porte principale en PVC</p>
 					</article>
 
 					<article>
-						<a href="#" class="image featured"><img src="images/pic04.jpg" alt="" /></a>
+						<a href="images/potager.jpg" data-lightbox="gallery" class="image featured"><img src="images/potager.thumb.jpg" alt="" /></a>
 						<header>
-							<h3><a href="#">Des potagers en carrés</a></h3>
+							<h3>Des potagers en carrés</h3>
 						</header>
 						<p>Au fond du jardin se trouvent nos potagers en terrasse de 50m<sup>2</sup></p>
+					</article>
+
+				</div>
+			</section>
+
+		<!-- Banner -->
+			<section class="banner">
+				<header>
+					<h2>Un intérieur <strong>spacieux</strong>.</h2>
+					<p>
+						La maison a une surface de <strong>140m<sup>2</sup></strong> sur <strong>2 niveaux</strong><br/>
+						On y trouve : 5 pièces, 1 cuisine ouverte, 1 salle de bain et 2 WC
+					</p>
+					<p>
+						<div id="dmd_pano_aeLhbb" style="width: 425px; height: 327px; display: inline-block;"></div><br/>
+						Découvrez la visite panoramique du rez-de-chaussée...
+					</p>
+				</header>
+			</section>
+
+		<!-- Carousel -->
+			<section class="carousel">
+				<div class="reel">
+
+					<!--
+					<article>
+						<a href="images/entree+salon.jpg" data-lightbox="gallery" class="image featured"><img src="images/entree+salon.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Entrée et salon</h3>
+						</header>
+						<p>Blabla blab blablabla blabl blabla bla bl blablablab</p>
+					</article>
+					-->
+
+					<article>
+						<a href="images/salon.jpg" data-lightbox="gallery" class="image featured"><img src="images/salon.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Salon</h3>
+						</header>
+						<p>40m<sup>2</sup> Blabla blab blablabla blabl blabla bla bl blablablab</p>
+					</article>
+
+					<article>
+						<a href="images/salleamanger.jpg" data-lightbox="gallery" class="image featured"><img src="images/salleamanger.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Salle à manger</h3>
+						</header>
+						<p>30m<sup>2</sup> Blabla blab blablabla blabl blabla bla bl blablablab</p>
+					</article>
+
+					<article>
+						<a href="images/cuisine.jpg" data-lightbox="gallery" class="image featured"><img src="images/cuisine.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Cuisine</h3>
+						</header>
+						<p>15m<sup>2</sup> Blabla blab blablabla blabl blabla bla bl blablablab</p>
+					</article>
+
+					<article>
+						<a href="images/mezzanine.jpg" data-lightbox="gallery" class="image featured"><img src="images/mezzanine.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Mezzanine</h3>
+						</header>
+						<p>8m<sup>2</sup> Blabla blab blablabla blabl blabla bla bl blablablab</p>
+					</article>
+
+					<article>
+						<a href="images/salledebain.jpg" data-lightbox="gallery" class="image featured"><img src="images/salledebain.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Salle de bain</h3>
+						</header>
+						<p>12m<sup>2</sup> Blabla blab blablabla blabl blabla bla bl blablablab</p>
+					</article>
+
+					<article>
+						<a href="images/chambre1.jpg" data-lightbox="gallery" class="image featured"><img src="images/chambre1.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Chambre 1</h3>
+						</header>
+						<p>15m<sup>2</sup> Blabla blab blablabla blabl blabla bla bl blablablab</p>
+					</article>
+
+					<article>
+						<a href="images/chambre2.jpg" data-lightbox="gallery" class="image featured"><img src="images/chambre2.thumb.jpg" alt="" /></a>
+						<header>
+							<h3>Chambre 2</h3>
+						</header>
+						<p>15m<sup>2</sup> Blabla blab blablabla blabl blabla bla bl blablablab</p>
 					</article>
 
 				</div>
@@ -159,24 +261,33 @@
 							vendre notre maison.
 						</p>
 					</header>
+
 					<p>
-						Commodo id natoque malesuada sollicitudin elit suscipit. Curae suspendisse mauris posuere accumsan massa
-						posuere lacus convallis tellus interdum. Amet nullam fringilla nibh nulla convallis ut venenatis purus
-						sit arcu sociis. Nunc fermentum adipiscing tempor cursus nascetur adipiscing adipiscing. Primis aliquam
-						mus lacinia lobortis phasellus suscipit. Fermentum lobortis non tristique ante proin sociis accumsan
-						lobortis. Auctor etiam porttitor phasellus tempus cubilia ultrices tempor sagittis. Nisl fermentum
-						consequat integer interdum integer purus sapien. Nibh eleifend nulla nascetur pharetra commodo mi augue
-						interdum tellus. Ornare cursus augue feugiat sodales velit lorem. Semper elementum ullamcorper lacinia
-						natoque aenean scelerisque.
+						Originaires de Schiltigheim, nous avons démarré la construction de la maison en 2007
+						après avoir acheté le terrain de 10ares au cours de l'été 2006. Accompagné par un architecte spécialisé dans les constructions en ossature bois, nous avons conçu une
+						maison à la fois simple et spacieuse qui nous permettrait de voir la famille s'agrandir progressivement.
+
+					<p>
+						Après 9 mois de travaux, c'est en avril 2008 que nous avons emménagé et commencé une nouvelle vie au grand air.
 					</p>
-					<footer>
-						<a href="#" class="button">Continue Reading</a>
-					</footer>
+
+					<p>
+						Les années qui ont suivi ont vu l'arrivé de nos voisins avec qui nous sommes devenus amis, la naissance de nos filles
+						et beaucoup de petite joies au fil des saisons et des changements de paysages.
+					</p>
+
+					<p>
+						Nous souhaitons à présent donner vie à un nouveau projet. En effet, nous avons décidé de nous installer à quelques pas
+						de Reinhardsmunster dans une maison plus ancienne mais aussi plus grande afin d'ouvrir un gite rural.<br/>
+						C'est pour réaliser ce projet que nous devons à présent nous séparer de notre maison.
+					</p>
+
 				</article>
 
 			</div>
 
 		<!-- Features -->
+		<!--
 			<div class="wrapper style1">
 
 				<section id="features" class="container special">
@@ -219,115 +330,72 @@
 				</section>
 
 			</div>
-
+		-->
 		<!-- Footer -->
 			<div id="footer">
 				<div class="container">
 					<div class="row">
+						<header>
+							<h2>Caractéristiques techniques</h2>
+						</header>
+					</div>
+
+					<div class="row">
 
 						<!-- Tweets -->
-							<section class="4u">
-								<header>
-									<h2 class="icon fa-twitter circled"><span class="label">Tweets</span></h2>
-								</header>
-								<ul class="divided">
-									<li>
-										<article class="tweet">
-											Amet nullam fringilla nibh nulla convallis tique ante sociis accumsan.
-											<span class="timestamp">5 minutes ago</span>
-										</article>
-									</li>
-									<li>
-										<article class="tweet">
-											Hendrerit rutrum quisque.
-											<span class="timestamp">30 minutes ago</span>
-										</article>
-									</li>
-									<li>
-										<article class="tweet">
-											Curabitur donec nulla massa laoreet nibh. Lorem praesent montes.
-											<span class="timestamp">3 hours ago</span>
-										</article>
-									</li>
-									<li>
-										<article class="tweet">
-											Lacus natoque cras rhoncus curae dignissim ultricies. Convallis orci aliquet.
-											<span class="timestamp">5 hours ago</span>
-										</article>
-									</li>
-								</ul>
-							</section>
+							<section class="6u">
 
-						<!-- Posts -->
-							<section class="4u">
-								<header>
-									<h2 class="icon fa-file circled"><span class="label">Posts</span></h2>
-								</header>
 								<ul class="divided">
 									<li>
-										<article class="post stub">
-											<header>
-												<h3><a href="#">Nisl fermentum integer</a></h3>
-											</header>
-											<span class="timestamp">3 hours ago</span>
+										<article class="tweet">
+											Surfaces :<br/>
+											<span class="timestamp">Salon/Salle à manger : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Cuisine : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Cellier : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">WC rez-de-chaussée : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Chambre 1 : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Chambre 2 : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Chambre 3 : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Salle de bain : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Totale habitable : 140m<sup>2</sup></span><br/>
+											<br/>
+											<span class="timestamp">Garage : XXm<sup>2</sup></span><br/>
+											<span class="timestamp">Cave : XXm<sup>2</sup></span><br/>
 										</article>
 									</li>
 									<li>
-										<article class="post stub">
-											<header>
-												<h3><a href="#">Phasellus portitor lorem</a></h3>
-											</header>
-											<span class="timestamp">6 hours ago</span>
+										<article class="tweet">
+											Chauffage :<br/>
+											<span class="timestamp">Pompe à chaleur et chaudière De Dietrich</span><br/>
+											<span class="timestamp">Plancher chauffant à basse température au rez-de-chaussée</span><br/>
+											<span class="timestamp">Radiateur à basse tempéruture à l'étage</span><br/>
 										</article>
 									</li>
 									<li>
-										<article class="post stub">
-											<header>
-												<h3><a href="#">Magna tempus consequat</a></h3>
-											</header>
-											<span class="timestamp">Yesterday</span>
+										<article class="tweet">
+											Eau chaude sanitaire : <br/>
+											<span class="timestamp">Panneaux solaire thermique et ballon De Dietrich Trio</span>
 										</article>
 									</li>
 									<li>
-										<article class="post stub">
-											<header>
-												<h3><a href="#">Feugiat lorem ipsum</a></h3>
-											</header>
-											<span class="timestamp">2 days ago</span>
+										<article class="tweet">
+											Autres équipements : <br/>
+											<span class="timestamp">Porte de garage sectionnelle automatique</span><br/>
+											<span class="timestamp">Aspiration centralisée Prosp'air</span><br/>
+											<span class="timestamp">Cuve de récupération d'eau enterrée de 5000 litres</span><br/>
+											<span class="timestamp">Pompe de relevage Gardena en sous-sol</span>
 										</article>
 									</li>
 								</ul>
 							</section>
 
 						<!-- Photos -->
-							<section class="4u">
-								<header>
-									<h2 class="icon fa-camera circled"><span class="label">Photos</span></h2>
-								</header>
-								<div class="row quarter no-collapse">
-									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
-									</div>
-									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="row quarter no-collapse">
-									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
-									</div>
-									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
-									</div>
-								</div>
-								<div class="row quarter no-collapse">
-									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
-									</div>
-									<div class="6u">
-										<a href="#" class="image fit"><img src="images/pic15.jpg" alt="" /></a>
-									</div>
-								</div>
+							<section class="6u" style="text-align: center;">
+
+								Diagnostic de performance énergétique :<br>
+
+								<img src="images/dpe.jpg" />
+
 							</section>
 
 					</div>
@@ -336,11 +404,14 @@
 						<div class="12u">
 
 							<!-- Contact -->
-								<section class="contact">
+								<section id="contact" class="contact">
 									<header>
-										<h3>Nisl turpis nascetur interdum?</h3>
+										<h3>Vous souhaitez visitez la maison ou avoir plus d'informations ?</h3>
 									</header>
-									<p>Urna nisl non quis interdum mus ornare ridiculus egestas ridiculus lobortis vivamus tempor aliquet.</p>
+									<p>Envoyez un mail à <a href="mailto:notre-maison@gmail.com">notre-maison@gmail.com</a> ou appelez-nous <a href="http://www.pagesjaunes.fr/pagesblanches/pfFicheDetailleePart.jsf?idParution=0SM4FBBC0002&idInscription=1&autresCoords=false&grandeCarte=false">à ce numéro</a></p>
+
+									<p>Découvrez aussi nos annonces de vente sur Internet :</p>
+
 									<ul class="icons">
 										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
@@ -363,6 +434,12 @@
 					</div>
 				</div>
 			</div>
+
+			<script type="text/javascript">
+				var dmdEmbeds = dmdEmbeds || [], aeLhbb_w='425', aeLhbb_h='327';
+				(function(){ dmdEmbeds.push('aeLhbb');})();
+			</script>
+			<script type="text/javascript" src="js/embed.js"></script>
 
 	</body>
 </html>

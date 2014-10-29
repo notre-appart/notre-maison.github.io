@@ -948,7 +948,7 @@
 /* Banner                                                                        */
 /*********************************************************************************/
 
-	#banner
+	.banner
 	{
 		background: #fff;
 		text-align: center;
@@ -956,7 +956,7 @@
 		margin-bottom: 0;
 	}
 
-		#banner header > p
+		.banner header > p
 		{
 			margin-bottom: 0;
 		}
